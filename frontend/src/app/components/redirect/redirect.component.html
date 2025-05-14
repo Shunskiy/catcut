@@ -1,0 +1,17 @@
+<div class="redirect-wrapper" *ngIf="(currentUrl$ | async)">
+  <h1>
+    Redirecting you to {{ currentUrl$ | async }}
+  </h1>
+
+  <h1>
+    in {{ (redirectTimer$ | async) }}
+  </h1>
+</div>
+
+<div *ngIf="!(currentUrl$ | async) && (error$ | async)">
+  <p>{{ error$ | async }}</p>
+  <a routerLink="/">
+    But you can always create one =)
+  </a>
+</div>
+

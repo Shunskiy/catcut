@@ -1,0 +1,11 @@
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=catcut
+    volumes:
+      - "~/apps/postgres:/var/lib/postgresql/data"

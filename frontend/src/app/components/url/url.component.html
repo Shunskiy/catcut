@@ -1,0 +1,22 @@
+<h1 class="title">
+  Catcut: Shorten, Purr, Repeat!
+</h1>
+
+<form class="grid" [formGroup]="urlForm" (ngSubmit)="submitForm()" *ngIf="!(generatedUrl$ | async)">
+  <input type="text" (input)="handleInput()" formControlName="url"
+         placeholder="Just drop the link, and the kitties will do the rest!"/>
+  <button type="submit">Make magic</button>
+</form>
+
+<p *ngIf="(formError$ | async)">
+  Something wrong
+</p>
+
+<div class="generated-url__wrapper" *ngIf="(generatedUrl$ | async)">
+  <h2  class="generated-url">
+    You short url ready: <a [href]="(generatedUrl$ | async)">{{ (generatedUrl$ | async) }}</a>
+  </h2>
+  <button type="button" (click)="resetForm()">
+    Make another
+  </button>
+</div>
